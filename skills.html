@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Skills | Eesha Tolety</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <style>
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+      }
+      .skill-group {
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 24px;
+        transition: all 0.25s;
+      }
+      .skill-group:hover {
+        border-color: var(--border-gold);
+        transform: translateY(-3px);
+      }
+      .skill-group-title {
+        font-size: 0.7rem;
+        font-weight: 600;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 16px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid var(--border-gold);
+      }
+      @media (max-width: 900px) {
+        .skills-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      @media (max-width: 600px) {
+        .skills-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="stars-canvas"></canvas>
+    <nav>
+      <a class="nav-logo" href="index.html">Eesha Tolety</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="experience.html">Experience</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="involvement.html">Involvement</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <button class="theme-btn" onclick="toggleTheme()">
+        <svg id="t-svg" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="5" />
+          <line x1="12" y1="1" x2="12" y2="3" />
+          <line x1="12" y1="21" x2="12" y2="23" />
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+          <line x1="1" y1="12" x2="3" y2="12" />
+          <line x1="21" y1="12" x2="23" y2="12" />
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" /></svg
+        ><span id="t-label">Light</span>
+      </button>
+    </nav>
+    <div class="page-wrap">
+      <div class="page-hero">
+        <div class="section-label">Technical Expertise</div>
+        <h1>Skills</h1>
+        <p>
+          Simulation, CAD, programming, fabrication, and materials tools used
+          across research and graduate coursework.
+        </p>
+      </div>
+      <div class="page-content">
+        <div class="skills-grid">
+          <div class="skill-group">
+            <div class="skill-group-title">Simulation &amp; FEA</div>
+            <div class="tags">
+              <span class="tag">ABAQUS</span
+              ><span class="tag">ANSYS Structural</span
+              ><span class="tag">ANSYS Workbench</span
+              ><span class="tag">ANSYS APDL</span
+              ><span class="tag">Stress Analysis</span
+              ><span class="tag">Failure Modes</span
+              ><span class="tag">Deformation</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <div class="skill-group-title">CFD &amp; Fluids</div>
+            <div class="tags">
+              <span class="tag">ANSYS Fluent</span
+              ><span class="tag">ANSYS CFX</span
+              ><span class="tag">OpenFOAM</span><span class="tag">Paraview</span
+              ><span class="tag">Meshing</span
+              ><span class="tag">Aerodynamics</span
+              ><span class="tag">Multiphysics</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <div class="skill-group-title">CAD &amp; Design</div>
+            <div class="tags">
+              <span class="tag">SolidWorks</span
+              ><span class="tag">SolidEdge</span><span class="tag">NX</span
+              ><span class="tag">Onshape</span><span class="tag">AutoCAD</span
+              ><span class="tag">Rhino</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <div class="skill-group-title">Programming</div>
+            <div class="tags">
+              <span class="tag">MATLAB</span
+              ><span class="tag">MATLAB Simulink</span
+              ><span class="tag">Python</span><span class="tag">C++</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <div class="skill-group-title">Fabrication</div>
+            <div class="tags">
+              <span class="tag">3D Printing (FDM)</span
+              ><span class="tag">Prusa Slicer</span
+              ><span class="tag">Prototyping</span
+              ><span class="tag">DFM Principles</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <div class="skill-group-title">Materials &amp; Testing</div>
+            <div class="tags">
+              <span class="tag">SEM</span><span class="tag">XRF</span
+              ><span class="tag">Mechanical Testing</span
+              ><span class="tag">Composites</span
+              ><span class="tag">Mg/CNT Analysis</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <p>© 2026 Eesha Tolety</p>
+      <p>Boulder, Colorado</p>
+    </footer>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>

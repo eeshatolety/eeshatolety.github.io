@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FLAIR Project | Eesha Tolety</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/projects.css" />
+  </head>
+  <body>
+    <canvas id="stars-canvas"></canvas>
+    <nav>
+      <a class="nav-logo" href="index.html">Eesha Tolety</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="experience.html">Experience</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="involvement.html">Involvement</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <button class="theme-btn" onclick="toggleTheme()">
+        <svg id="t-svg" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="5" />
+          <line x1="12" y1="1" x2="12" y2="3" />
+          <line x1="12" y1="21" x2="12" y2="23" />
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+          <line x1="1" y1="12" x2="3" y2="12" />
+          <line x1="21" y1="12" x2="23" y2="12" />
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" /></svg
+        ><span id="t-label">Light</span>
+      </button>
+    </nav>
+
+    <div class="page-wrap">
+      <div class="page-hero">
+        <div class="breadcrumb">
+          <a href="projects.html">Projects</a><span>/</span><span>FLAIR</span>
+        </div>
+        <div class="section-label">
+          Graduate Project · CU Boulder · Aug 2025 – May 2026
+        </div>
+        <h1>FLAIR — VTOL Drone Payload System</h1>
+        <p>
+          This project involves incorporating a new type of payload into a large
+          VTOL drone.
+        </p>
+      </div>
+
+      <div class="page-content">
+        <div class="nav-btns">
+          <a href="projects.html" class="btn btn-ghost"
+            ><svg
+              viewBox="0 0 24 24"
+              style="
+                width: 15px;
+                height: 15px;
+                stroke: currentColor;
+                fill: none;
+                stroke-width: 2;
+                stroke-linecap: round;
+                stroke-linejoin: round;
+              "
+            >
+              <polyline points="15 18 9 12 15 6" /></svg
+            >All Projects</a
+          >
+          <a href="project-mg-major.html" class="btn btn-ghost"
+            >Next Project<svg
+              viewBox="0 0 24 24"
+              style="
+                width: 15px;
+                height: 15px;
+                stroke: currentColor;
+                fill: none;
+                stroke-width: 2;
+                stroke-linecap: round;
+                stroke-linejoin: round;
+              "
+            >
+              <polyline points="9 18 15 12 9 6" /></svg
+          ></a>
+        </div>
+
+        <div class="proj-layout">
+          <div class="proj-body">
+            <h2>Project Overview</h2>
+            <p>
+              This project involves incorporating a new type of payload into a
+              large VTOL drone. As one of the structural leads on the project, I
+              have been using SolidWorks and Solid Edge for the design work.
+              Additionally, I utilized SolidWorks and Abaqus for design
+              analysis. During the production phase, I assisted with fabrication
+              and testing of the components before the final flight.
+            </p>
+
+            <!--
+          TO ADD IMAGE: replace this placeholder with:
+          <img src="assets/img/flair-overview.jpg" alt="FLAIR drone overview" class="proj-img"/>
+          <p class="proj-img-caption">FLAIR payload system overview</p>
+        -->
+            <img
+              src="assets/img/group_flair.png"
+              alt="FLAIR drone overview"
+              class="proj-img"
+            />
+            <p class="proj-img-caption">FLAIR Project Team</p>
+
+            <h2>About FLAIR</h2>
+            <p>
+              The Flying Laboratory for Airborne Isotope Research (FLAIR)
+              project is a multi-disciplinary effort to design, build, and fly
+              an atmospheric-sampling aircraft capable of measuring and
+              transmitting water stable isotope data for environmental research.
+              This work is conducted as part of the ASEN 5018 Graduate Projects
+              program at the University of Colorado (CU) Boulder, enabling
+              students to gain full-length engineering experience while
+              delivering a functional scientific payload.
+            </p>
+            <p>
+              The aircraft's experimental system integrates a Vaisala HMP60
+              humidity and temperature sensor, a multi-pass Herriott cell laser
+              optical cavity, and a customized airflow channel mounted within
+              the payload cavity of a Black Swift S3 UAV. During flight, ambient
+              air is actively pulled through the front-end inlet, conditioned
+              through a flow straightener, and directed through the Herriott
+              cell, where multiple internal reflections effectively increase the
+              optical path length — enhancing absorption sensitivity and
+              allowing for more precise δ¹⁸O detection.
+            </p>
+
+            <!--
+          TO ADD IMAGE: replace this placeholder with:
+          <img src="assets/img/flair-assembly.jpg" alt="FLAIR assembly" class="proj-img"/>
+          <p class="proj-img-caption">FLAIR mechanical assembly</p>
+        -->
+            <img
+              src="assets/img/final_assebly.png"
+              alt="FLAIR assembly"
+              class="proj-img"
+            />
+            <p class="proj-img-caption">FLAIR mechanical assembly</p>
+
+            <h2>My Role</h2>
+            <ul>
+              <li>
+                Serving as one of the structural leads — responsible for
+                structural analysis and design decisions throughout the project
+              </li>
+              <li>
+                Using SolidWorks and SolidEdge for all CAD and design work
+              </li>
+              <li>Performing design analysis using SolidWorks and ABAQUS</li>
+              <li>
+                Assisting with fabrication and testing of the components during
+                the production phase
+              </li>
+              <li>
+                Participating in final flight preparation and component
+                validation
+              </li>
+            </ul>
+
+            <!--
+          TO ADD IMAGE: replace this placeholder with:
+          <img src="assets/img/flair-flight.jpg" alt="FLAIR flight test" class="proj-img"/>
+          <p class="proj-img-caption">FLAIR pre-flight preparation</p>
+        -->
+            <img
+              src="assets/img/final_assem.jpeg"
+              alt="FLAIR flight test"
+              class="proj-img"
+            />
+            <p class="proj-img-caption">FLAIR pre-flight preparation</p>
+
+            <div class="divider"></div>
+
+            <h2>Project Documents</h2>
+            <!--
+          TO ADD PDF: make sure the file is at assets/pdf/FLAIR_CDR.pdf
+          The link below will work once you add the file.
+        -->
+            <a
+              href="assets/pdf/Critical Design Review.pdf"
+              class="pdf-ref"
+              target="_blank"
+            >
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"
+                />
+                <polyline points="14 2 14 8 20 8" />
+                <line x1="16" y1="13" x2="8" y2="13" />
+                <line x1="16" y1="17" x2="8" y2="17" />
+              </svg>
+              Critical Design Review (CDR)
+            </a>
+            <a href="assets/pdf/PDR.pdf" class="pdf-ref" target="_blank">
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"
+                />
+                <polyline points="14 2 14 8 20 8" />
+                <line x1="16" y1="13" x2="8" y2="13" />
+                <line x1="16" y1="17" x2="8" y2="17" />
+              </svg>
+              Preliminary Design Review (PDR)
+            </a>
+
+            <div class="divider"></div>
+            <div class="tags">
+              <span class="tag-gold">SolidWorks</span
+              ><span class="tag-gold">SolidEdge</span
+              ><span class="tag-gold">ABAQUS</span
+              ><span class="tag-gold">FEA</span
+              ><span class="tag-gold">VTOL</span
+              ><span class="tag-gold">UAV</span
+              ><span class="tag-gold">3D Printing</span>
+            </div>
+          </div>
+
+          <div class="sidebar">
+            <div class="sidebar-card">
+              <h3>Project Details</h3>
+              <div class="meta-row">
+                <span>Type</span><span>Graduate Project</span>
+              </div>
+              <div class="meta-row">
+                <span>Institution</span><span>CU Boulder</span>
+              </div>
+              <div class="meta-row">
+                <span>Role</span><span>Structural Lead</span>
+              </div>
+              <div class="meta-row">
+                <span>Duration</span><span>Aug 2025 – May 2026</span>
+              </div>
+              <div class="meta-row">
+                <span>Status</span><span>Completed</span>
+              </div>
+            </div>
+            <div class="sidebar-card">
+              <h3>Tools Used</h3>
+              <div class="tags" style="gap: 6px">
+                <span class="tag">SolidWorks</span
+                ><span class="tag">SolidEdge</span
+                ><span class="tag">ABAQUS</span
+                ><span class="tag">3D Printing</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <p>© 2026 Eesha Tolety</p>
+      <p>Boulder, Colorado</p>
+    </footer>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>

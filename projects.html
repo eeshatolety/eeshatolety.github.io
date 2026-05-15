@@ -1,0 +1,437 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projects | Eesha Tolety</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/projects.css" />
+    <style>
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+      .proj-card {
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        overflow: hidden;
+        transition: all 0.25s;
+        text-decoration: none;
+        display: block;
+        position: relative;
+      }
+      .proj-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: linear-gradient(to right, var(--gold), transparent);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.3s;
+      }
+      .proj-card:hover {
+        border-color: var(--border-gold);
+        transform: translateY(-4px);
+      }
+      .proj-card:hover::before {
+        transform: scaleX(1);
+      }
+      .proj-card-img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+        display: block;
+      }
+      .proj-inner {
+        padding: 24px 28px;
+      }
+      .proj-num {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 2.8rem;
+        font-weight: 700;
+        color: var(--gold-dim);
+        line-height: 1;
+        margin-bottom: -4px;
+        filter: brightness(4);
+      }
+      [data-theme="light"] .proj-num {
+        filter: brightness(0.7);
+      }
+      .proj-title {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--text-bright);
+        margin-bottom: 6px;
+      }
+      .proj-meta-label {
+        font-size: 0.72rem;
+        color: var(--gold);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+        font-weight: 500;
+      }
+      .proj-desc {
+        font-size: 0.84rem;
+        color: var(--text-muted);
+        line-height: 1.8;
+        margin-bottom: 16px;
+      }
+      .proj-footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 12px 28px;
+        border-top: 1px solid var(--border);
+        background: var(--bg);
+      }
+      .proj-footer span {
+        font-size: 0.72rem;
+        color: var(--text-muted);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .proj-footer .arrow {
+        color: var(--gold);
+        font-size: 1rem;
+        transition: transform 0.2s;
+      }
+      .proj-card:hover .arrow {
+        transform: translate(3px, -3px);
+      }
+      .code-note {
+        background: var(--bg2);
+        border: 1px solid var(--border-gold);
+        border-radius: 10px;
+        padding: 20px 24px;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin-top: 40px;
+      }
+      .code-note svg {
+        width: 20px;
+        height: 20px;
+        min-width: 20px;
+        stroke: var(--gold);
+        fill: none;
+        stroke-width: 1.8;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .code-note p {
+        font-size: 0.84rem;
+        color: var(--text-muted);
+        line-height: 1.7;
+      }
+      .code-note strong {
+        color: var(--gold);
+      }
+      /* Card image placeholder */
+      .card-img-placeholder {
+        width: 100%;
+        height: 180px;
+        background: var(--bg3);
+        border-bottom: 1px solid var(--border);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        color: var(--text-muted);
+      }
+      .card-img-placeholder svg {
+        width: 28px;
+        height: 28px;
+        stroke: var(--border-gold);
+        fill: none;
+        stroke-width: 1.5;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .card-img-placeholder span {
+        font-size: 0.72rem;
+        text-align: center;
+        line-height: 1.5;
+      }
+      .card-img-placeholder code {
+        font-family: monospace;
+        font-size: 0.68rem;
+        color: var(--gold);
+        background: var(--gold-dim);
+        padding: 2px 6px;
+        border-radius: 3px;
+      }
+      @media (max-width: 900px) {
+        .projects-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="stars-canvas"></canvas>
+    <nav>
+      <a class="nav-logo" href="index.html">Eesha Tolety</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="experience.html">Experience</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="involvement.html">Involvement</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <button class="theme-btn" onclick="toggleTheme()">
+        <svg id="t-svg" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="5" />
+          <line x1="12" y1="1" x2="12" y2="3" />
+          <line x1="12" y1="21" x2="12" y2="23" />
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+          <line x1="1" y1="12" x2="3" y2="12" />
+          <line x1="21" y1="12" x2="23" y2="12" />
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" /></svg
+        ><span id="t-label">Light</span>
+      </button>
+    </nav>
+
+    <div class="page-wrap">
+      <div class="page-hero">
+        <div class="section-label">Selected Work</div>
+        <h1>Projects</h1>
+        <p>
+          Click any project to view full details, images, methods, and linked
+          MATLAB code.
+        </p>
+      </div>
+      <div class="page-content">
+        <div class="projects-grid">
+          <!-- PROJECT 1: FLAIR -->
+          <a href="project-flair.html" class="proj-card">
+            <!--
+          TO ADD IMAGE: replace the div below with:
+          <img src="assets/img/flair-cover.jpg" alt="FLAIR project" class="proj-card-img"/>
+        -->
+            <img
+              src="assets/img/FLAIR_Main.jpg"
+              alt="FLAIR project"
+              class="proj-card-img"
+            />
+            <div class="proj-inner">
+              <div class="proj-num">01</div>
+              <div class="proj-title">FLAIR — VTOL Drone Payload System</div>
+              <div class="proj-meta-label">
+                Graduate Project · CU Boulder · Aug 2025 – May 2026
+              </div>
+              <p class="proj-desc">
+                This project involves incorporating a new type of payload into a
+                large VTOL drone. As one of the structural leads on the project,
+                I have been using SolidWorks and Solid Edge for the design work.
+              </p>
+              <div class="tags">
+                <span class="tag-gold">SolidWorks</span
+                ><span class="tag-gold">SolidEdge</span
+                ><span class="tag-gold">ABAQUS</span
+                ><span class="tag-gold">FEA</span
+                ><span class="tag-gold">VTOL</span>
+              </div>
+            </div>
+            <div class="proj-footer">
+              <span>View Project</span><span class="arrow">↗</span>
+            </div>
+          </a>
+
+          <!-- PROJECT 2: Mg/CNT MAJOR -->
+          <a href="project-mg-major.html" class="proj-card">
+            <!--
+          TO ADD IMAGE: replace the div below with:
+          <img src="assets/img/mg-major-cover.jpg" alt="Mg/CNT Major project" class="proj-card-img"/>
+        -->
+            <img
+              src="assets/img/Major_Main.png"
+              alt="Mg/CNT Major project"
+              class="proj-card-img"
+            />
+
+            <div class="proj-inner">
+              <div class="proj-num">02</div>
+              <div class="proj-title">
+                Microstructural and Mechanical Analysis of CNTs/Mg Composite
+              </div>
+              <div class="proj-meta-label">
+                Major Project · Amity University · Jan – Jun 2023
+              </div>
+              <p class="proj-desc">
+                A CNT-reinforced magnesium composite was developed using a
+                modified friction stir processing technique to improve CNT
+                dispersion. XRF confirmed the presence of carbon, magnesium, and
+                oxygen.
+              </p>
+              <div class="tags">
+                <span class="tag-gold">Friction Stir</span
+                ><span class="tag-gold">SEM</span
+                ><span class="tag-gold">XRF</span
+                ><span class="tag-gold">Composites</span
+                ><span class="tag-gold">Published</span>
+              </div>
+            </div>
+            <div class="proj-footer">
+              <span>View Project</span><span class="arrow">↗</span>
+            </div>
+          </a>
+
+          <!-- PROJECT 3: Mg/CNT MINOR -->
+          <a href="project-mg-minor.html" class="proj-card">
+            <!--
+          TO ADD IMAGE: replace the div below with:
+          <img src="assets/img/mg-minor-cover.jpg" alt="Mg/CNT Minor project" class="proj-card-img"/>
+        -->
+            <img
+              src="assets/img/minor_setup.png"
+              alt="Mg/CNT Minor project"
+              class="proj-card-img"
+            />
+            <div class="proj-inner">
+              <div class="proj-num">03</div>
+              <div class="proj-title">
+                Overall Enhancement of Physio-Mechanical Characteristics of CNT
+                Composites
+              </div>
+              <div class="proj-meta-label">
+                Minor Project · Amity University · Aug 2022 – Jan 2023
+              </div>
+              <p class="proj-desc">
+                Pure magnesium was reinforced with varying weight percentages
+                (0.3%–1.8%) of multiwalled CNTs, prepared from organic waste
+                like sugarcane, using stir casting.
+              </p>
+              <div class="tags">
+                <span class="tag-gold">Stir Casting</span
+                ><span class="tag-gold">MWCNTs</span
+                ><span class="tag-gold">Magnesium</span
+                ><span class="tag-gold">Mechanical Testing</span>
+              </div>
+            </div>
+            <div class="proj-footer">
+              <span>View Project</span><span class="arrow">↗</span>
+            </div>
+          </a>
+
+          <!-- CFD: AIRFOILS -->
+          <a href="project-cfd-airfoils.html" class="proj-card">
+            <img
+              src="assets/img/CFD_Main.png"
+              alt="Mg/CNT Minor project"
+              class="proj-card-img"
+            />
+            <div class="proj-inner">
+              <div class="proj-num">04</div>
+              <div class="proj-title">Computational Analysis of Airfoils</div>
+              <div class="proj-meta-label">
+                CFD · FEM · PINN · CU Boulder · 2024–2025
+              </div>
+              <p class="proj-desc">
+                Two-dimensional unsteady simulations of flow over airfoils using
+                the Navier-Stokes equations discretized with FEM, combined with
+                a Physics-Informed Neural Network to predict aerodynamic
+                coefficients.
+              </p>
+              <div class="tags">
+                <span class="tag-gold">Navier-Stokes</span>
+                <span class="tag-gold">FEM</span>
+                <span class="tag-gold">PINN</span>
+                <span class="tag-gold">CFD</span>
+              </div>
+            </div>
+            <div class="proj-footer">
+              <span>View Project</span><span class="arrow">↗</span>
+            </div>
+          </a>
+
+          <!-- FEA: COMPOSITE LAMINATES -->
+          <a href="project-fea-composites.html" class="proj-card">
+            <img
+              src="assets/img/Composites_1.png"
+              alt="Mg/CNT Minor project"
+              class="proj-card-img"
+            />
+            <div class="proj-inner">
+              <div class="proj-num">05</div>
+              <div class="proj-title">
+                Design Optimization of Carbon/Epoxy Laminates
+              </div>
+              <div class="proj-meta-label">
+                FEA · Composites · MATLAB · CU Boulder · 2025
+              </div>
+              <p class="proj-desc">
+                Design and optimization of a composite laminate for minimum
+                weight satisfying stiffness (ABD matrix) and strength (Tsai-Wu
+                failure criterion) constraints under combined loading
+                conditions.
+              </p>
+              <div class="tags">
+                <span class="tag-gold">ABD Matrix</span>
+                <span class="tag-gold">Tsai-Wu</span>
+                <span class="tag-gold">MATLAB</span>
+                <span class="tag-gold">Composites</span>
+              </div>
+            </div>
+            <div class="proj-footer">
+              <span>View Project</span><span class="arrow">↗</span>
+            </div>
+          </a>
+
+          <!-- STRUCTURAL DYNAMICS -->
+          <a href="project-random-vibration.html" class="proj-card">
+            <img
+              src="assets/img/random_main.png"
+              alt="Mg/CNT Minor project"
+              class="proj-card-img"
+            />
+            <div class="proj-inner">
+              <div class="proj-num">06</div>
+              <div class="proj-title">
+                Random Vibration & Structural Dynamics Analysis
+              </div>
+              <div class="proj-meta-label">
+                Structural Dynamics · MATLAB · CU Boulder · 2024–2025
+              </div>
+              <p class="proj-desc">
+                Analysis of spring-mass systems and a cantilever beam under
+                random vibration using Rayleigh-Ritz and modal sum methods.
+                Computed natural frequencies, frequency response functions, and
+                RMS displacements.
+              </p>
+              <div class="tags">
+                <span class="tag-gold">Rayleigh-Ritz</span>
+                <span class="tag-gold">Modal Analysis</span>
+                <span class="tag-gold">PSD</span>
+                <span class="tag-gold">MATLAB</span>
+              </div>
+            </div>
+            <div class="proj-footer">
+              <span>View Project</span><span class="arrow">↗</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <p>© 2026 Eesha Tolety</p>
+      <p>Boulder, Colorado</p>
+    </footer>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>

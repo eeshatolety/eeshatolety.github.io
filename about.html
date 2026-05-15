@@ -1,0 +1,550 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About | Eesha Tolety</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <style>
+      /* ── LAYOUT ── */
+      .about-grid {
+        display: grid;
+        grid-template-columns: 1.15fr 1fr;
+        gap: 64px;
+        align-items: start;
+      }
+
+      /* ── LEFT: BIO ── */
+      .about-text p {
+        color: var(--text);
+        font-size: 0.92rem;
+        line-height: 1.9;
+        margin-bottom: 18px;
+      }
+      .about-text strong {
+        color: var(--text-bright);
+        font-weight: 500;
+      }
+
+      .stats {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        margin-top: 32px;
+      }
+      .stat {
+        background: var(--bg);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 16px 18px;
+        transition: all 0.2s;
+      }
+      .stat:hover {
+        border-color: var(--border-gold);
+      }
+      .stat-n {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.9rem;
+        font-weight: 700;
+        color: var(--gold);
+        line-height: 1;
+        margin-bottom: 4px;
+      }
+      .stat-l {
+        font-size: 0.7rem;
+        color: var(--text-muted);
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      /* ── RIGHT: EDUCATION CARDS ── */
+      .edu-stack {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .edu-card {
+        background: var(--bg);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 24px 26px;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.25s;
+      }
+      .edu-card::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 3px;
+        background: var(--gold);
+        border-radius: 3px 0 0 3px;
+        opacity: 0;
+        transition: opacity 0.25s;
+      }
+      .edu-card:hover {
+        border-color: var(--border-gold);
+        transform: translateX(4px);
+      }
+      .edu-card:hover::before {
+        opacity: 1;
+      }
+
+      .edu-badge {
+        display: inline-block;
+        font-size: 0.65rem;
+        font-weight: 600;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--gold);
+        background: var(--gold-dim);
+        border: 1px solid var(--border-gold);
+        padding: 3px 10px;
+        border-radius: 20px;
+        margin-bottom: 12px;
+      }
+      .edu-school {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--text-bright);
+        margin-bottom: 4px;
+        line-height: 1.2;
+      }
+      .edu-field {
+        font-size: 0.82rem;
+        color: var(--text);
+        margin-bottom: 14px;
+        line-height: 1.5;
+      }
+      .edu-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        padding-top: 12px;
+        border-top: 1px solid var(--border);
+      }
+      .edu-meta-item {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.74rem;
+        color: var(--text-muted);
+      }
+      .edu-meta-item svg {
+        width: 12px;
+        height: 12px;
+        stroke: var(--gold);
+        fill: none;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .edu-meta-item strong {
+        color: var(--text-bright);
+        font-weight: 500;
+      }
+
+      /* ── BOTTOM: SKILLS + RESEARCH SIDE BY SIDE ── */
+      .skills-research-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 48px;
+        align-items: start;
+      }
+
+      .sub-section-title {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.6rem;
+        font-weight: 700;
+        color: var(--gold);
+        margin-bottom: 20px;
+      }
+
+      /* Skills */
+      .skills-stack {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .skill-group {
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 18px 20px;
+        transition: all 0.25s;
+      }
+      .skill-group:hover {
+        border-color: var(--border-gold);
+      }
+      .skill-group-title {
+        font-size: 0.7rem;
+        font-weight: 600;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 15px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid var(--border-gold);
+      }
+
+      /* Research interests */
+      .research-stack {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .research-item {
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 16px 18px;
+        transition: all 0.2s;
+      }
+      .research-item:hover {
+        border-color: var(--border-gold);
+      }
+      .research-item strong {
+        display: block;
+        color: var(--text-bright);
+        font-size: 0.84rem;
+        font-weight: 500;
+        margin-bottom: 2px;
+      }
+      .research-item span {
+        font-size: 0.76rem;
+        color: var(--text-muted);
+        line-height: 1;
+      }
+
+      @media (max-width: 1000px) {
+        .about-grid {
+          grid-template-columns: 1fr;
+          gap: 40px;
+        }
+        .skills-research-grid {
+          grid-template-columns: 1fr;
+          gap: 40px;
+        }
+        .stats {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      @media (max-width: 500px) {
+        .stats {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="stars-canvas"></canvas>
+
+    <nav>
+      <a class="nav-logo" href="index.html">Eesha Tolety</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="experience.html">Experience</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="involvement.html">Involvement</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <button class="theme-btn" onclick="toggleTheme()">
+        <svg id="t-svg" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="5" />
+          <line x1="12" y1="1" x2="12" y2="3" />
+          <line x1="12" y1="21" x2="12" y2="23" />
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+          <line x1="1" y1="12" x2="3" y2="12" />
+          <line x1="21" y1="12" x2="23" y2="12" />
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+        </svg>
+        <span id="t-label">Light</span>
+      </button>
+    </nav>
+
+    <div class="page-wrap">
+      <!-- PAGE HERO -->
+      <div class="page-hero" style="position: relative; overflow: hidden">
+        <img
+          src="assets/img/eesha_pic.png"
+          alt="Eesha Tolety"
+          style="
+            position: absolute;
+            right: 20%;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: center top;
+            border: 2px solid var(--border-gold);
+            box-shadow: 0 0 40px rgba(201, 168, 76, 0.15);
+          "
+        />
+        <div class="section-label">Who I Am</div>
+        <h1>About Me</h1>
+        <p>
+          Aerospace Engineering · Structures, Materials & Fluids · Boulder,
+          Colorado · Open to relocate
+        </p>
+      </div>
+
+      <div class="page-content">
+        <!-- BIO + EDUCATION GRID -->
+        <div class="about-grid">
+          <!-- LEFT: BIO -->
+          <div class="about-text">
+            <p>
+              I am a graduate student in aerospace engineering at the University
+              of Colorado Boulder, specializing in structures, fluids, and
+              materials. My study focuses on the intersection of simulation,
+              design, and fabrication. I am passionate about addressing complex
+              engineering challenges and effectively guiding projects from
+              initial CAD sketches through to validated simulations and the
+              development of physical prototypes.
+            </p>
+            <p>
+              My technical work primarily involves finite element analysis (FEA)
+              and computational fluid dynamics (CFD). I utilize ABAQUS and ANSYS
+              for structural analyses, including stress, deformation, and
+              failure modes, while employing ANSYS Fluent, CFX, and OpenFOAM for
+              modeling aerodynamic flows and multiphysics problems. I develop
+              simulations from the ground up, carefully considering meshing
+              strategies, boundary conditions, solver selection, and result
+              interpretation. Additionally, I design using SolidWorks,
+              SolidEdge, NX, Onshape, and AutoCAD, recognizing the significant
+              impact of upstream design decisions on the accuracy of downstream
+              simulation results.
+            </p>
+          </div>
+
+          <!-- RIGHT: EDUCATION -->
+          <div>
+            <div class="section-label" style="margin-bottom: 14px">
+              Education
+            </div>
+            <div class="edu-stack">
+              <div class="edu-card">
+                <div class="edu-badge">Master of Science</div>
+                <div class="edu-school">University of Colorado Boulder</div>
+                <div class="edu-field">
+                  Aerospace, Aeronautical & Astronautical Engineering<br />Specialization:
+                  Structures, Fluids & Materials
+                </div>
+                <div class="edu-meta">
+                  <div class="edu-meta-item">
+                    <svg viewBox="0 0 24 24">
+                      <rect x="3" y="4" width="18" height="18" rx="2" />
+                      <line x1="16" y1="2" x2="16" y2="6" />
+                      <line x1="8" y1="2" x2="8" y2="6" />
+                      <line x1="3" y1="10" x2="21" y2="10" />
+                    </svg>
+                    Aug 2024 – May 2026
+                  </div>
+                  <div class="edu-meta-item">
+                    <svg viewBox="0 0 24 24">
+                      <polygon
+                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+                      />
+                    </svg>
+                    <strong>GPA 3.67 / 4.00</strong>
+                  </div>
+                  <div class="edu-meta-item">
+                    <svg viewBox="0 0 24 24">
+                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+                      <circle cx="12" cy="10" r="3" />
+                    </svg>
+                    Boulder, CO
+                  </div>
+                </div>
+              </div>
+
+              <div class="edu-card">
+                <div class="edu-badge">Bachelor of Technology</div>
+                <div class="edu-school">Amity University</div>
+                <div class="edu-field">
+                  Aerospace, Aeronautical & Astronautical Engineering
+                </div>
+                <div class="edu-meta">
+                  <div class="edu-meta-item">
+                    <svg viewBox="0 0 24 24">
+                      <rect x="3" y="4" width="18" height="18" rx="2" />
+                      <line x1="16" y1="2" x2="16" y2="6" />
+                      <line x1="8" y1="2" x2="8" y2="6" />
+                      <line x1="3" y1="10" x2="21" y2="10" />
+                    </svg>
+                    Jul 2019 – Jun 2023
+                  </div>
+                  <div class="edu-meta-item">
+                    <svg viewBox="0 0 24 24">
+                      <polygon
+                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+                      />
+                    </svg>
+                    <strong>GPA 8.74 / 10 · Grade A</strong>
+                  </div>
+                  <div class="edu-meta-item">
+                    <svg viewBox="0 0 24 24">
+                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+                      <circle cx="12" cy="10" r="3" />
+                    </svg>
+                    Noida, India
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- SKILLS + RESEARCH INTERESTS SIDE BY SIDE -->
+        <div class="skills-research-grid">
+          <!-- LEFT: SKILLS -->
+          <div>
+            <div class="sub-section-title">Skills</div>
+            <div class="skills-stack">
+              <div class="skill-group">
+                <div class="skill-group-title">Structural Analysis</div>
+                <div class="tags">
+                  <span class="tag">ABAQUS</span
+                  ><span class="tag">ANSYS Structural</span
+                  ><span class="tag">ANSYS Workbench</span
+                  ><span class="tag">APDL</span
+                  ><span class="tag">Stress Analysis</span
+                  ><span class="tag">Vibrational Analysis</span
+                  ><span class="tag">Failure Modes</span>
+                </div>
+              </div>
+              <div class="skill-group">
+                <div class="skill-group-title">Fluid Analysis</div>
+                <div class="tags">
+                  <span class="tag">ANSYS Fluent</span
+                  ><span class="tag">ANSYS CFX</span
+                  ><span class="tag">OpenFOAM</span
+                  ><span class="tag">Paraview</span
+                  ><span class="tag">Meshing</span
+                  ><span class="tag">Aerodynamics</span>
+                </div>
+              </div>
+              <div class="skill-group">
+                <div class="skill-group-title">CAD & Design</div>
+                <div class="tags">
+                  <span class="tag">SolidWorks</span
+                  ><span class="tag">SolidEdge</span><span class="tag">NX</span
+                  ><span class="tag">Onshape</span
+                  ><span class="tag">AutoCAD</span
+                  ><span class="tag">Rhino</span>
+                </div>
+              </div>
+              <div class="skill-group">
+                <div class="skill-group-title">Programming</div>
+                <div class="tags">
+                  <span class="tag">MATLAB</span
+                  ><span class="tag">Simulink</span
+                  ><span class="tag">Python</span><span class="tag">C++</span>
+                </div>
+              </div>
+              <div class="skill-group">
+                <div class="skill-group-title">Fabrication</div>
+                <div class="tags">
+                  <span class="tag">3D Printing</span
+                  ><span class="tag">Prusa Slicer</span
+                  ><span class="tag">Prototyping</span
+                  ><span class="tag">FDM</span>
+                  <span class="tag">CNC </span>
+                </div>
+              </div>
+              <div class="skill-group">
+                <div class="skill-group-title">Materials & Testing</div>
+                <div class="tags">
+                  <span class="tag">SEM</span><span class="tag">XRF</span
+                  ><span class="tag">Mechanical Testing</span
+                  ><span class="tag">Composites</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- RIGHT: RESEARCH INTERESTS -->
+          <div>
+            <div class="sub-section-title">Research Interests</div>
+            <div class="research-stack">
+              <div class="research-item">
+                <strong>Structural Analysis & FEA</strong>
+                <span
+                  >Stress, deformation, and failure mode prediction in
+                  structures using ABAQUS and ANSYS. Optimization of analysis by
+                  different meshing and time integrations and also
+                  designs.</span
+                >
+              </div>
+              <div class="research-item">
+                <strong>Computational Fluid Dynamics</strong>
+                <span
+                  >Aerodynamic flow modeling and multiphysics problems built
+                  from scratch in ANSYS Fluent, CFX, and OpenFOAM with careful
+                  attention to meshing strategy, solver selection, and result
+                  interpretation.</span
+                >
+              </div>
+              <div class="research-item">
+                <strong>Design for Manufacture</strong>
+                <span
+                  >Bridging the gap between simulation and physical fabrication
+                  by applying DFM principles for 3D printing and prototyping,
+                  where most design decisions directly shape what is easily
+                  manufacturable and how well it performs.</span
+                >
+              </div>
+              <div class="research-item">
+                <strong>Multiphysics Simulation </strong>
+                <span
+                  >Coupled structural & thermal and fluid & structure
+                  interaction analyses where aerodynamic pressure loads feed
+                  directly into structural deformation models.</span
+                >
+              </div>
+
+              <div class="research-item">
+                <strong>VTOL & UAV Systems </strong>
+                <span
+                  >Payload integration and airframe structural design for large
+                  VTOL drones, with hands-on experience through the FLAIR
+                  graduate project at CU Boulder.</span
+                >
+              </div>
+              <div class="research-item">
+                <strong>Composite Materials</strong>
+                <span
+                  >CNT-reinforced magnesium matrix composites fabricated via
+                  friction stir processing and stir casting which can be
+                  characterized through SEM, XRF, and mechanical testing, which
+                  lead to a Springer publication in 2024.</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <p>© 2026 Eesha Tolety</p>
+      <p>Boulder, Colorado</p>
+    </footer>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>

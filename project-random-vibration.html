@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Random Vibration Analysis | Eesha Tolety</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/projects.css" />
+  </head>
+  <body>
+    <canvas id="stars-canvas"></canvas>
+    <nav>
+      <a class="nav-logo" href="index.html">Eesha Tolety</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="experience.html">Experience</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="involvement.html">Involvement</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <button class="theme-btn" onclick="toggleTheme()">
+        <svg id="t-svg" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="5" />
+          <line x1="12" y1="1" x2="12" y2="3" />
+          <line x1="12" y1="21" x2="12" y2="23" />
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+          <line x1="1" y1="12" x2="3" y2="12" />
+          <line x1="21" y1="12" x2="23" y2="12" />
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+        </svg>
+        <span id="t-label">Light</span>
+      </button>
+    </nav>
+
+    <div class="page-wrap">
+      <div class="page-hero">
+        <div class="breadcrumb">
+          <a href="projects.html">Projects</a>
+          <span>/</span>
+          <span>Structural Dynamics</span>
+        </div>
+        <div class="section-label">
+          Structural Dynamics · MATLAB · CU Boulder · 2024–2025
+        </div>
+        <h1>Random Vibration & Structural Dynamics Analysis</h1>
+        <p>
+          Spring-mass systems and cantilever beam analysis under random
+          vibration using Rayleigh-Ritz and modal sum methods.
+        </p>
+      </div>
+
+      <div class="page-content">
+        <div class="nav-btns">
+          <a href="project-fea-composites.html" class="btn btn-ghost">
+            <svg
+              viewBox="0 0 24 24"
+              style="
+                width: 15px;
+                height: 15px;
+                stroke: currentColor;
+                fill: none;
+                stroke-width: 2;
+                stroke-linecap: round;
+                stroke-linejoin: round;
+              "
+            >
+              <polyline points="15 18 9 12 15 6" />
+            </svg>
+            Previous
+          </a>
+          <a href="projects.html" class="btn btn-ghost">All Projects</a>
+        </div>
+
+        <div class="proj-layout">
+          <div class="proj-body">
+            <h2>Overview</h2>
+            <p>
+              This project analyzes structural systems subjected to random
+              vibration inputs. Two systems were studied: a spring-mass system
+              and a cantilever beam. The Rayleigh-Ritz method was used to
+              compute natural frequencies and mode shapes, which were then
+              verified against closed-form solutions. Frequency Response
+              Functions (FRFs) and RMS displacements under random vibration
+              input Power Spectral Density (PSD) were computed using modal sum
+              and direct inversion methods.
+            </p>
+
+            <h2>Cantilever Beam — Natural Frequencies</h2>
+            <p>
+              Closed-form solution for the natural frequencies and mode shapes
+              are used for verification for the Rayleigh-Ritz method. From the
+              results, the 1–3 modes are very accurate compared to mode 4. This
+              is observed because of the number of admissible functions used for
+              computation. The number of accurate mode shapes is approximately
+              half of the admissible functions used. In this code N = 6, because
+              of which only 3 mode shapes are accurate. The difference between
+              the two methods in the 4th mode shape is 6%, which is very less
+              and acceptable.
+            </p>
+            <ul>
+              <li>Mode 1: fdf = 4.18 Hz, fRR = 4.18 Hz</li>
+              <li>Mode 2: fdf = 26.18 Hz, fRR = 26.18 Hz</li>
+              <li>Mode 3: fdf = 73.31 Hz, fRR = 73.33 Hz</li>
+              <li>Mode 4: fdf = 143.65 Hz, fRR = 152.55 Hz (error 6.19%)</li>
+            </ul>
+            <p>
+              Similar to the spring-mass system, the verification function was
+              run for the Rayleigh-Ritz approach. The overlay clearly shows the
+              error is very little and calculated to be 4.035e-06.
+            </p>
+
+            <!--
+          Replace with your image:
+          
+        -->
+            <img
+              src="assets/img/random_mode.png"
+              class="proj-img"
+              alt="Mode shapes"
+            />
+            <p class="proj-img-caption">
+              Mode shapes overlay — Closed-form vs Rayleigh-Ritz and FRF
+              verification
+            </p>
+
+            <h2>Random Vibration Response</h2>
+            <p>
+              Under random vibration input PSD, the response is dominated by the
+              two well-separated resonance peaks within the analysis band at the
+              natural frequencies. The RMS values of maximum displacement of 2.5
+              × 10⁻² m for mass 1 and 1.9 × 10⁻² m for mass 2.
+            </p>
+            <p>
+              Under random vibration, similar to what was observed in the
+              spring-mass system, the response is dominated by the resonance
+              peaks at the natural frequencies. As the random vibrations are
+              introduced at the tip, there is more RMS displacement at the tip
+              compared to the other distances.
+            </p>
+            <ul>
+              <li>x = 0.25L: RMS = 5.4539e-03 m</li>
+              <li>x = 0.50L: RMS = 1.8451e-02 m</li>
+              <li>x = 0.75L: RMS = 3.5456e-02 m</li>
+              <li>x = 1.00L: RMS = 5.4009e-02 m</li>
+            </ul>
+
+            <!--
+          Replace with your image:
+          
+        -->
+            <img
+              src="assets/img/random_final.png"
+              class="proj-img"
+              alt="PSD response"
+            />
+            <p class="proj-img-caption">
+              Random-input PSD and response PSD of the cantilever beam
+            </p>
+
+            <h2>Conclusion</h2>
+            <p>
+              The findings of this study confirm a fundamental structural
+              dynamics principle for real-world linear systems subjected to
+              stationary random vibration: the root-mean-square (RMS) response
+              is strongly biased toward the first few frequency modes. This
+              phenomenon occurs because the Frequency Response Function (FRF)
+              amplifies the energy of the input Power Spectral Density (PSD) at
+              the system's first resonance. Because the majority of the
+              integrated area under the response curve is concentrated around
+              the first peak, the system's total energy is heavily influenced by
+              its lowest-frequency behavior.
+            </p>
+            <p>
+              This finding has important effects on modeling efficiency from a
+              design and engineering point of view. It implies that
+              high-fidelity, computationally intensive models are not essential
+              for precise safety and performance evaluations. Instead, a
+              lower-fidelity model, like a simplified beam representation or a
+              coarse finite element mesh, is usually enough if it is set up to
+              accurately capture the first few natural modes and its associated
+              damping. This conclusion applies to more than just simple beams;
+              it also applies to complicated aerospace and civil structures.
+            </p>
+
+            <div class="divider"></div>
+
+            <h2>Project Report</h2>
+            <a
+              href="assets/pdf/random_vibrations.pdf"
+              class="pdf-ref"
+              target="_blank"
+            >
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M14 2H6a2 2 0 00-2 2v16a2 2 0
+            002 2h12a2 2 0 002-2V8z"
+                />
+                <polyline points="14 2 14 8 20 8" />
+                <line x1="16" y1="13" x2="8" y2="13" />
+                <line x1="16" y1="17" x2="8" y2="17" />
+              </svg>
+              View Full Report
+            </a>
+
+            <div class="divider"></div>
+            <div class="tags">
+              <span class="tag-gold">Rayleigh-Ritz</span>
+              <span class="tag-gold">Modal Analysis</span>
+              <span class="tag-gold">PSD</span>
+              <span class="tag-gold">FRF</span>
+              <span class="tag-gold">Random Vibration</span>
+              <span class="tag-gold">MATLAB</span>
+              <span class="tag-gold">Cantilever Beam</span>
+            </div>
+          </div>
+
+          <div class="sidebar">
+            <div class="sidebar-card">
+              <h3>Study Details</h3>
+              <div class="meta-row">
+                <span>Type</span><span>Structural Dynamics</span>
+              </div>
+              <div class="meta-row">
+                <span>Institution</span><span>CU Boulder</span>
+              </div>
+              <div class="meta-row">
+                <span>Method</span><span>Rayleigh-Ritz</span>
+              </div>
+              <div class="meta-row">
+                <span>Language</span><span>MATLAB</span>
+              </div>
+              <div class="meta-row">
+                <span>Mode 1</span><span>4.18 Hz</span>
+              </div>
+              <div class="meta-row">
+                <span>Mode 2</span><span>26.18 Hz</span>
+              </div>
+            </div>
+            <div class="sidebar-card">
+              <h3>Tools Used</h3>
+              <div class="tags" style="gap: 6px">
+                <span class="tag">MATLAB</span>
+                <span class="tag">Modal Sum</span>
+                <span class="tag">Direct Inversion</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <p>© 2026 Eesha Tolety</p>
+      <p>Boulder, Colorado</p>
+    </footer>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>

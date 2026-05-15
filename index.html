@@ -1,0 +1,510 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eesha Tolety | Aerospace Engineer</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <style>
+      #hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        padding: 0 80px;
+        position: relative;
+        z-index: 1;
+      }
+      .hero-content {
+        max-width: 720px;
+      }
+
+      .hero-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.74rem;
+        font-weight: 500;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--gold);
+        border: 1px solid var(--border-gold);
+        padding: 7px 18px;
+        border-radius: 20px;
+        margin-bottom: 28px;
+        background: var(--gold-dim);
+        animation: fadeUp 0.8s ease both;
+      }
+      .hero-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--gold);
+        animation: pulse 2s infinite;
+      }
+
+      .hero-name-row {
+        display: flex;
+        align-items: center;
+        gap: 70px;
+        margin-bottom: 16px;
+      }
+      .hero-avatar {
+        width: 150px;
+        height: 150px;
+        min-width: 150px;
+        border-radius: 50%;
+        border: 2px solid var(--border-gold);
+        object-fit: cover;
+        object-position: center top;
+        box-shadow: 0 0 24px rgba(201, 168, 76, 0.2);
+        animation: fadeUp 0.8s 0.1s ease both;
+      }
+      .hero-name {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(3.5rem, 8vw, 6rem);
+        font-weight: 700;
+        line-height: 1;
+        color: var(--text-bright);
+        animation: fadeUp 0.8s 0.1s ease both;
+      }
+      .hero-name span {
+        color: var(--gold);
+      }
+
+      .hero-title {
+        font-size: 1.05rem;
+        color: var(--text);
+        font-weight: 400;
+        margin-bottom: 18px;
+        animation: fadeUp 0.8s 0.2s ease both;
+      }
+      .hero-div {
+        width: 48px;
+        height: 1px;
+        background: var(--gold);
+        margin-bottom: 18px;
+        animation: fadeUp 0.8s 0.25s ease both;
+      }
+      .hero-desc {
+        font-size: 0.92rem;
+        color: var(--text-muted);
+        max-width: 520px;
+        line-height: 1.9;
+        margin-bottom: 36px;
+        animation: fadeUp 0.8s 0.3s ease both;
+      }
+      .hero-chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 40px;
+        animation: fadeUp 0.8s 0.35s ease both;
+      }
+      .hero-chip {
+        font-size: 0.75rem;
+        font-weight: 500;
+        color: var(--text);
+        border: 1px solid var(--border);
+        background: var(--bg2);
+        padding: 5px 14px;
+        border-radius: 16px;
+        transition: all 0.2s;
+      }
+      .hero-chip:hover {
+        border-color: var(--border-gold);
+        color: var(--gold);
+      }
+
+      .hero-btns {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+        animation: fadeUp 0.8s 0.4s ease both;
+      }
+
+      /* ── NAV CARDS ── */
+      .nav-cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+        padding: 64px 80px;
+        position: relative;
+        z-index: 1;
+        max-width: 1180px;
+        margin: 0 auto;
+      }
+      .nav-card {
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 28px;
+        text-decoration: none;
+        transition: all 0.25s;
+        display: block;
+        position: relative;
+        overflow: hidden;
+      }
+      .nav-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: linear-gradient(to right, var(--gold), transparent);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.3s;
+      }
+      .nav-card:hover {
+        border-color: var(--border-gold);
+        transform: translateY(-3px);
+      }
+      .nav-card:hover::before {
+        transform: scaleX(1);
+      }
+      .nav-card-icon {
+        width: 40px;
+        height: 40px;
+        background: var(--gold-dim);
+        border: 1px solid var(--border-gold);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 14px;
+      }
+      .nav-card-icon svg {
+        width: 18px;
+        height: 18px;
+        stroke: var(--gold);
+        fill: none;
+        stroke-width: 1.8;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .nav-card-title {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: var(--text-bright);
+        margin-bottom: 6px;
+      }
+      .nav-card-desc {
+        font-size: 0.8rem;
+        color: var(--text-muted);
+        line-height: 1.6;
+      }
+      .nav-card-arrow {
+        position: absolute;
+        top: 28px;
+        right: 28px;
+        color: var(--border-gold);
+        font-size: 1.1rem;
+        transition:
+          transform 0.2s,
+          color 0.2s;
+      }
+      .nav-card:hover .nav-card-arrow {
+        transform: translate(3px, -3px);
+        color: var(--gold);
+      }
+
+      /* ── CONTACT SECTION ── */
+      .contact-section {
+        background: var(--bg2);
+        padding: 80px;
+        position: relative;
+        z-index: 1;
+        border-top: 1px solid var(--border);
+        transition: background var(--tr);
+      }
+      .contact-inner {
+        max-width: 700px;
+        margin: 0 auto;
+        text-align: center;
+      }
+      .contact-label {
+        font-size: 0.72rem;
+        letter-spacing: 0.28em;
+        text-transform: uppercase;
+        color: var(--gold);
+        font-weight: 600;
+        margin-bottom: 10px;
+      }
+      .contact-title {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 2.2rem;
+        font-weight: 700;
+        color: var(--text-bright);
+        margin-bottom: 16px;
+      }
+      .contact-line {
+        width: 40px;
+        height: 2px;
+        background: var(--gold);
+        margin: 0 auto 24px;
+        border-radius: 1px;
+      }
+      .contact-desc {
+        font-size: 0.9rem;
+        color: var(--text-muted);
+        line-height: 1.9;
+        margin-bottom: 40px;
+        max-width: 480px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .contact-btns {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        justify-content: center;
+        max-width: 580px;
+        margin: 0 auto;
+      }
+
+      @media (max-width: 960px) {
+        #hero {
+          padding: 0 24px;
+        }
+        .nav-cards {
+          grid-template-columns: 1fr 1fr;
+          padding: 40px 24px;
+        }
+        .contact-section {
+          padding: 60px 24px;
+        }
+      }
+      @media (max-width: 640px) {
+        .nav-cards {
+          grid-template-columns: 1fr;
+        }
+        .hero-btns {
+          flex-direction: column;
+        }
+        .contact-btns {
+          flex-direction: column;
+          align-items: stretch;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="stars-canvas"></canvas>
+
+    <nav>
+      <a class="nav-logo" href="index.html">Eesha Tolety</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="experience.html">Experience</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="involvement.html">Involvement</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <button class="theme-btn" onclick="toggleTheme()">
+        <svg id="t-svg" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="5" />
+          <line x1="12" y1="1" x2="12" y2="3" />
+          <line x1="12" y1="21" x2="12" y2="23" />
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+          <line x1="1" y1="12" x2="3" y2="12" />
+          <line x1="21" y1="12" x2="23" y2="12" />
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+        </svg>
+        <span id="t-label">Light</span>
+      </button>
+    </nav>
+
+    <!-- ── HERO ── -->
+    <section id="hero">
+      <div class="hero-content">
+        <div class="hero-tag">
+          <div class="hero-dot"></div>
+          Open to Full-Time Opportunities
+        </div>
+        <div class="hero-name-row">
+          <h1 class="hero-name" style="margin-bottom: 0">
+            Eesha<br /><span>Tolety</span>
+          </h1>
+          <img
+            src="assets/img/Profile_pic.png"
+            alt="Eesha Tolety"
+            class="hero-avatar"
+          />
+        </div>
+        <p class="hero-title">
+          MS Aerospace Engineering · University of Colorado Boulder
+        </p>
+        <div class="hero-div"></div>
+        <p class="hero-desc">
+          A graduate student in aerospace engineering, passionate about
+          structures, fluids, and materials. Always eager to apply my knowledge
+          in simulation, CAD, and prototyping to contribute to an engineering
+          team that tackles impactful challenges in the aerospace industry. I'm
+          excited about the opportunity to be a part of innovative solutions
+          that shape the future of flight!
+        </p>
+        <div class="hero-chips">
+          <span class="hero-chip">FEA</span>
+          <span class="hero-chip">CFD</span>
+          <span class="hero-chip">CAD</span>
+          <span class="hero-chip">SolidWorks</span>
+          <span class="hero-chip">MATLAB</span>
+          <span class="hero-chip">ABAQUS</span>
+          <span class="hero-chip">ANSYS</span>
+        </div>
+        <div class="hero-btns">
+          <a href="contact.html" class="btn btn-gold">Get In Touch</a>
+          <a href="projects.html" class="btn btn-outline">View Projects</a>
+          <a
+            href="assets/pdf/Eesha_Resume.pdf"
+            target="_blank"
+            class="btn btn-gold"
+            >View Resume</a
+          >
+        </div>
+      </div>
+
+      <!-- ORBIT -->
+      <div class="hero-orbit">
+        <div class="orbit-ring"></div>
+        <div class="orbit-ring"><div class="orbit-dot"></div></div>
+        <div class="orbit-ring"><div class="orbit-dot"></div></div>
+        <div class="orbit-planet"></div>
+      </div>
+    </section>
+
+    <!-- ── CONTACT SECTION ── -->
+    <div class="contact-section">
+      <div class="contact-inner">
+        <div class="contact-label">Let's Connect</div>
+        <div class="contact-title">Get In Touch</div>
+        <div class="contact-line"></div>
+        <p class="contact-desc">
+          Looking for full-time roles in Structures, Fluids and Materials design
+          and analyses. If your team works at the intersection of simulation and
+          physical design, I would love to connect.
+        </p>
+        <div class="contact-btns">
+          <a href="mailto:eeshatolety@outlook.com" class="btn btn-ghost">
+            <svg
+              viewBox="0 0 24 24"
+              style="
+                width: 15px;
+                height: 15px;
+                stroke: currentColor;
+                fill: none;
+                stroke-width: 2;
+                stroke-linecap: round;
+                stroke-linejoin: round;
+              "
+            >
+              <path
+                d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2
+          2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+              />
+              <polyline points="22,6 12,13 2,6" />
+            </svg>
+            eeshatolety@outlook.com
+          </a>
+
+          <a
+            href="https://www.linkedin.com/in/eesha-tolety"
+            target="_blank"
+            class="btn btn-ghost"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              style="
+                width: 15px;
+                height: 15px;
+                stroke: currentColor;
+                fill: none;
+                stroke-width: 2;
+                stroke-linecap: round;
+                stroke-linejoin: round;
+              "
+            >
+              <path
+                d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2
+          2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"
+              />
+              <rect x="2" y="9" width="4" height="12" />
+              <circle cx="4" cy="4" r="2" />
+            </svg>
+            linkedin.com/in/eesha-tolety
+          </a>
+
+          <a
+            href="https://github.com/eeshatolety"
+            target="_blank"
+            class="btn btn-ghost"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              style="
+                width: 15px;
+                height: 15px;
+                stroke: currentColor;
+                fill: none;
+                stroke-width: 2;
+                stroke-linecap: round;
+                stroke-linejoin: round;
+              "
+            >
+              <path
+                d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37
+          3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44
+          5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65
+          16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09
+          1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78
+          c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"
+              />
+            </svg>
+            github.com/eeshatolety
+          </a>
+
+          <a href="tel:+17202437819" class="btn btn-ghost">
+            <svg
+              viewBox="0 0 24 24"
+              style="
+                width: 15px;
+                height: 15px;
+                stroke: currentColor;
+                fill: none;
+                stroke-width: 2;
+                stroke-linecap: round;
+                stroke-linejoin: round;
+              "
+            >
+              <path
+                d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79
+          0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79
+          19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012
+          1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45
+          2.11L6.91 7.91a16 16 0 006.18 6.18l1.27-1.27
+          a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7
+          A2 2 0 0122 16.92z"
+              />
+            </svg>
+            +1 (720) 243-7819
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <p>© 2026 Eesha Tolety</p>
+      <p>Boulder, Colorado · Open to Opportunities</p>
+    </footer>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>

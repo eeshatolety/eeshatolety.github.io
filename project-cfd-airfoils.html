@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Computational Analysis of Airfoils | Eesha Tolety</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/projects.css" />
+  </head>
+  <body>
+    <canvas id="stars-canvas"></canvas>
+    <nav>
+      <a class="nav-logo" href="index.html">Eesha Tolety</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="experience.html">Experience</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="involvement.html">Involvement</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <button class="theme-btn" onclick="toggleTheme()">
+        <svg id="t-svg" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="5" />
+          <line x1="12" y1="1" x2="12" y2="3" />
+          <line x1="12" y1="21" x2="12" y2="23" />
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+          <line x1="1" y1="12" x2="3" y2="12" />
+          <line x1="21" y1="12" x2="23" y2="12" />
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+        </svg>
+        <span id="t-label">Light</span>
+      </button>
+    </nav>
+
+    <div class="page-wrap">
+      <div class="page-hero">
+        <div class="breadcrumb">
+          <a href="projects.html">Projects</a>
+          <span>/</span>
+          <span>CFD — Airfoil Analysis</span>
+        </div>
+        <div class="section-label">
+          CFD · FEM · PINN · CU Boulder · 2024–2025
+        </div>
+        <h1>Computational Analysis of Airfoils</h1>
+        <p>
+          Eesha Tolety, Aditya K. Singh, Parth V. Shah, Dron D. Purkayastha ·
+          Ann and H.J. Smead Aerospace Engineering Sciences, University of
+          Colorado, Boulder
+        </p>
+      </div>
+
+      <div class="page-content">
+        <div class="nav-btns">
+          <a href="project-mg-minor.html" class="btn btn-ghost">
+            <svg
+              viewBox="0 0 24 24"
+              style="
+                width: 15px;
+                height: 15px;
+                stroke: currentColor;
+                fill: none;
+                stroke-width: 2;
+                stroke-linecap: round;
+                stroke-linejoin: round;
+              "
+            >
+              <polyline points="15 18 9 12 15 6" />
+            </svg>
+            Previous
+          </a>
+          <a href="projects.html" class="btn btn-ghost">All Projects</a>
+          <a href="project-fea-composites.html" class="btn btn-ghost">
+            Next
+            <svg
+              viewBox="0 0 24 24"
+              style="
+                width: 15px;
+                height: 15px;
+                stroke: currentColor;
+                fill: none;
+                stroke-width: 2;
+                stroke-linecap: round;
+                stroke-linejoin: round;
+              "
+            >
+              <polyline points="9 18 15 12 9 6" />
+            </svg>
+          </a>
+        </div>
+
+        <div class="proj-layout">
+          <div class="proj-body">
+            <h2>Abstract</h2>
+            <p>
+              The unsteady Navier-Stokes equations are a powerful tool in the
+              field of computational fluid dynamics (CFD) for solving and
+              analyzing complex flow fields. In this report, we present
+              two-dimensional unsteady simulations of flow over airfoils with
+              varying geometries, and we compute the resulting aerodynamic
+              forces. Vortex shedding patterns play a critical role in
+              determining the lift force generated, making them a key focus in
+              the study of flying objects. The simulations were performed by
+              discretizing the governing flow equations using the Finite Element
+              Method (FEM), a widely used and robust numerical approach in the
+              computational science community.
+            </p>
+            <p>
+              While numerical simulations provide detailed insights, they often
+              come with a high computational cost. As an alternative, we explore
+              the use of neural networks, which can be trained on available
+              datasets to predict flow fields and aerodynamic forces. This
+              approach offers a significant reduction in computational expense
+              and holds great promise as an efficient tool for predicting flow
+              patterns across a wide range of geometries.
+            </p>
+
+            <h2>Introduction</h2>
+            <p>
+              The performance of airfoils is critical for the aerodynamic
+              efficiency of various aircraft and aerospace vehicles. This study
+              conducts a comparative analysis of three fundamental airfoil
+              shapes — symmetrical, asymmetrical (cambered), and
+              semi-symmetrical — focusing on their aerodynamic behavior across
+              different flow regimes. The central research question is: How do
+              airfoil shapes at different angles of attack influence the
+              pressure, velocity, lift and drag?
+            </p>
+            <p>
+              The primary contribution of this study is the performance analysis
+              of the three airfoil categories within a computational fluid
+              dynamics (CFD) framework and using PINN (Physics Integrated Neural
+              Network) to predict the CL vs α and CD vs α curves. Findings will
+              focus on lift and drag coefficients, pressure gradients, and
+              velocity gradients to provide clearer guidance on airfoil
+              selection across different flight regimes.
+            </p>
+
+            <h2>Numerical Method</h2>
+            <p>
+              The model problem considered in this report consists of multiple
+              airfoils positioned at different angles of attack, placed within a
+              uniform flow field inside a rectangular domain. This setup employs
+              a reverse methodology, where instead of simulating a moving
+              airfoil, the airfoil is kept stationary and the flow is modeled as
+              moving around it. This approach simplifies the simulation process
+              while capturing the essential flow physics.
+            </p>
+            <p>
+              The incompressible unsteady Navier-Stokes equations were employed
+              as the governing equations. The numerical formulation involved
+              transforming the strong form of these equations into a weighted
+              residual form, which was then discretized using the
+              Petrov-Galerkin method to obtain the weak form. For getting more
+              stabilized results and avoiding spurious modes, the Galerkin Least
+              Square Stabilization scheme (Q1P1) was implemented, since we had a
+              Quadrilateral mesh in the surrounding region of the airfoil and a
+              Triangular mesh in the far field.
+            </p>
+
+            <h2>Simulation Setup</h2>
+            <p>
+              The geometry profile and meshing was done using GMSH. The
+              following parameters were used for the finer and coarse meshes: h1
+              = 0.01 (fine mesh), h2 = 2 (coarse mesh). The mesh quality was
+              assessed in Paraview, with the following factors: Aspect ratio,
+              Scaled Jacobian, Maximum angle.
+            </p>
+            <p>
+              The following input parameters were used for the simulation: ρ = 1
+              Kg/m³; Time = 4 sec; Δt = 0.005 sec; μ = 0.00002 Pa·s. Inlet
+              boundary conditions: u = 1 m/s, v = 0.
+            </p>
+
+            <!--
+          Replace with your image:
+          <img src="assets/img/cfd-airfoils-mesh.jpg"
+               class="proj-img" alt="Airfoil mesh"/>
+          <p class="proj-img-caption">
+            Mesh around NACA airfoil — fine mesh near surface,
+            coarse in far field
+          </p>
+        -->
+            <img
+              src="assets/img/CFD_mesh.png"
+              class="proj-img"
+              alt="Airfoil mesh"
+            />
+            <p class="proj-img-caption">
+              Mesh around NACA airfoil — fine mesh near surface, coarse in far
+              field
+            </p>
+
+            <h2>Physics-Informed Neural Network (PINN)</h2>
+            <p>
+              The PINN in this project emulates a CFD solver by mapping airfoil
+              geometry and incidence angle directly to the aerodynamic
+              coefficients CL and CD. The network serves as a surrogate model in
+              the broader CFD study, removing the need to run a high-fidelity
+              Navier-Stokes solver for every candidate geometry.
+            </p>
+            <ul>
+              <li>
+                Inputs: eight class-shape-transformation (CST) coefficients
+                (c1,...,c8) describing the airfoil surface, plus the angle of
+                attack α
+              </li>
+              <li>Outputs: predicted lift and drag coefficients CL and CD</li>
+              <li>
+                Architecture: 3 hidden layers, 64 neurons each, tanh activations
+              </li>
+              <li>
+                Dataset: 288 unique geometry–AoA samples; 80/20 train–validation
+                split
+              </li>
+              <li>
+                The three evaluation foils (NACA 0012, 2408, 2415) were excluded
+                from training to test generalisation
+              </li>
+            </ul>
+
+            <h2>Results</h2>
+            <p>
+              From the pressure plots, we can observe that the symmetric NACA
+              0012 airfoil doesn't show a pressure difference at 0° but at 16°
+              angle of attack, shows a pressure difference which indicates lift
+              generation. Comparatively, both NACA 2408 and NACA 2415, which are
+              unsymmetric and semi-symmetric, have pressure differences at both
+              angles of attack indicating lift generation.
+            </p>
+            <p>
+              Velocity plots of all the NACA airfoils show flow separation at
+              16° angle of attack indicating there will be stalling.
+            </p>
+
+            <!--
+          Replace with your image:
+          <img src="assets/img/cfd-airfoils-pressure.jpg"
+               class="proj-img" alt="Pressure plots"/>
+          <p class="proj-img-caption">
+            Pressure plots at 0° and 16° angles of attack for
+            NACA 0012, 2408, and 2415
+          </p>
+        -->
+            <img
+              src="assets/img/CFD_Velocity.png"
+              class="proj-img"
+              alt="Pressure plots"
+            />
+            <p class="proj-img-caption">
+              Pressure plots at 0° and 16° angles of attack for NACA 0012, 2408,
+              and 2415
+            </p>
+
+            <p>
+              Figure below compares the physics-informed neural network (blue)
+              with reference aero-data (red) for the three withheld airfoils.
+              The network captures the lift curves accurately across the entire
+              0–8° sweep. In contrast, the drag prediction shows a clear
+              anomaly: for NACA 2415 the curve bends downward beyond 5–6°. This
+              error stems from a training set that was both sparse and noisy in
+              CD and, critically, contained no samples above 8°.
+            </p>
+
+            <!--
+          Replace with your image:
+          <img src="assets/img/cfd-airfoils-pinn.jpg"
+               class="proj-img" alt="PINN results"/>
+          <p class="proj-img-caption">
+            PINN performance on NACA 0012, 2408, 2415 —
+            CL vs AoA (left), CD vs AoA (right)
+          </p>
+        -->
+            <img
+              src="assets/img/CFD_PINN.png"
+              class="proj-img"
+              alt="PINN results"
+            />
+            <p class="proj-img-caption">
+              PINN performance on NACA 0012, 2408, 2415 — CL vs AoA (left), CD
+              vs AoA (right)
+            </p>
+
+            <h2>Conclusion</h2>
+            <p>
+              The Navier-Stokes equations are a cornerstone of fluid dynamics,
+              providing a powerful framework for investigating a wide range of
+              flow phenomena, from smooth laminar flows in channels to complex,
+              high-speed turbulent regimes. In this study, we analyzed the flow
+              over multiple airfoils in two-dimensional conditions at low
+              velocities. Our results demonstrate that the vortex shedding
+              patterns from the airfoils vary significantly with the angle of
+              attack, which directly influences the lift and drag forces acting
+              on the airfoils.
+            </p>
+            <p>
+              While conventional code-based CFD simulations have long been the
+              standard for modeling such flows, a promising new approach is
+              emerging: the use of neural networks to predict aerodynamic
+              forces. This data-driven technique has the potential to bypass the
+              need for computationally expensive simulations for each individual
+              geometry, enabling rapid predictions across a broad range of
+              shapes and conditions.
+            </p>
+
+            <div class="divider"></div>
+
+            <h2>Project Report</h2>
+            <a
+              href="assets/pdf/CFD_Project.pdf"
+              class="pdf-ref"
+              target="_blank"
+            >
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M14 2H6a2 2 0 00-2 2v16a2 2 0
+            002 2h12a2 2 0 002-2V8z"
+                />
+                <polyline points="14 2 14 8 20 8" />
+                <line x1="16" y1="13" x2="8" y2="13" />
+                <line x1="16" y1="17" x2="8" y2="17" />
+              </svg>
+              View Full Report
+            </a>
+
+            <div class="divider"></div>
+            <div class="tags">
+              <span class="tag-gold">Navier-Stokes</span>
+              <span class="tag-gold">FEM</span>
+              <span class="tag-gold">PINN</span>
+              <span class="tag-gold">GMSH</span>
+              <span class="tag-gold">Paraview</span>
+              <span class="tag-gold">Vortex Shedding</span>
+              <span class="tag-gold">NACA Airfoils</span>
+            </div>
+          </div>
+
+          <div class="sidebar">
+            <div class="sidebar-card">
+              <h3>Study Details</h3>
+              <div class="meta-row">
+                <span>Type</span><span>CFD Study</span>
+              </div>
+              <div class="meta-row">
+                <span>Institution</span><span>CU Boulder</span>
+              </div>
+              <div class="meta-row">
+                <span>Course</span><span>Aerospace CFD</span>
+              </div>
+              <div class="meta-row">
+                <span>Airfoils</span>
+                <span>NACA 0012, 2408, 2415</span>
+              </div>
+            </div>
+            <div class="sidebar-card">
+              <h3>Tools Used</h3>
+              <div class="tags" style="gap: 6px">
+                <span class="tag">GMSH</span>
+                <span class="tag">Paraview</span>
+                <span class="tag">FEM</span>
+                <span class="tag">Python/MATLAB</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <p>© 2026 Eesha Tolety</p>
+      <p>Boulder, Colorado</p>
+    </footer>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>

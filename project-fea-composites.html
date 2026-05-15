@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Composite Laminate Design | Eesha Tolety</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/projects.css" />
+  </head>
+  <body>
+    <canvas id="stars-canvas"></canvas>
+    <nav>
+      <a class="nav-logo" href="index.html">Eesha Tolety</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="experience.html">Experience</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="involvement.html">Involvement</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <button class="theme-btn" onclick="toggleTheme()">
+        <svg id="t-svg" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="5" />
+          <line x1="12" y1="1" x2="12" y2="3" />
+          <line x1="12" y1="21" x2="12" y2="23" />
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+          <line x1="1" y1="12" x2="3" y2="12" />
+          <line x1="21" y1="12" x2="23" y2="12" />
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+        </svg>
+        <span id="t-label">Light</span>
+      </button>
+    </nav>
+
+    <div class="page-wrap">
+      <div class="page-hero">
+        <div class="breadcrumb">
+          <a href="projects.html">Projects</a>
+          <span>/</span>
+          <span>FEA — Composite Laminates</span>
+        </div>
+        <div class="section-label">
+          FEA · Composites · MATLAB · CU Boulder · May 2025
+        </div>
+        <h1>
+          Design Optimization of Carbon/Epoxy Laminates under Stiffness and
+          Strength Constraints
+        </h1>
+        <p>
+          Eesha Tolety, Aditya K. Singh · Ann and H.J. Smead Aerospace
+          Engineering Sciences, University of Colorado, Boulder
+        </p>
+      </div>
+
+      <div class="page-content">
+        <div class="nav-btns">
+          <a href="project-cfd-airfoils.html" class="btn btn-ghost">
+            <svg
+              viewBox="0 0 24 24"
+              style="
+                width: 15px;
+                height: 15px;
+                stroke: currentColor;
+                fill: none;
+                stroke-width: 2;
+                stroke-linecap: round;
+                stroke-linejoin: round;
+              "
+            >
+              <polyline points="15 18 9 12 15 6" />
+            </svg>
+            Previous
+          </a>
+          <a href="projects.html" class="btn btn-ghost">All Projects</a>
+          <a href="project-fem-1d.html" class="btn btn-ghost">
+            Next
+            <svg
+              viewBox="0 0 24 24"
+              style="
+                width: 15px;
+                height: 15px;
+                stroke: currentColor;
+                fill: none;
+                stroke-width: 2;
+                stroke-linecap: round;
+                stroke-linejoin: round;
+              "
+            >
+              <polyline points="9 18 15 12 9 6" />
+            </svg>
+          </a>
+        </div>
+
+        <div class="proj-layout">
+          <div class="proj-body">
+            <h2>Abstract</h2>
+            <p>
+              This project focuses on the design and optimization of a composite
+              laminate aimed at achieving the minimum possible weight while
+              satisfying specific stiffness and strength criteria. The laminate
+              design process involves determining the number of plies, their
+              orientation angles, and maintaining a uniform fiber volume
+              fraction within a specified range. Utilizing the properties of
+              carbon/epoxy lamina, the design approach unfolds in three stages:
+              (1) optimizing the ABD matrix to meet stiffness constraints, (2)
+              ensuring structural integrity under various loading scenarios by
+              applying the Tsai-Wu failure criterion, and (3) simultaneously
+              addressing both stiffness and strength conditions. The findings
+              underscore the trade-offs between stiffness and strength,
+              illustrating the methodology used to justify the final chosen
+              solution.
+            </p>
+
+            <h2>Introduction</h2>
+            <p>
+              Composite materials, especially carbon fiber-reinforced polymers,
+              are renowned for their high stiffness-to-weight and
+              strength-to-weight ratios, making them highly suitable for
+              aerospace structural applications. This project, part of Composite
+              Structures and Materials, aims to design the lightest possible
+              laminate that meets a specified set of mechanical performance
+              criteria. The objective of this work is to develop efficient
+              structural solutions that meet the concurrent requirements of
+              stiffness and strength, which are essential characteristics of
+              advanced aerospace components.
+            </p>
+            <p>
+              The design space encompasses laminates with varying numbers of
+              plies, diverse ply orientations, and a consistent fiber volume
+              fraction ranging from 45 to 65 percent. The project is divided
+              into three distinct phases: the first concentrates exclusively on
+              stiffness, requiring the in-plane (A) and bending (D) matrices to
+              exceed defined threshold values across all orientations. In the
+              second phase, the laminate's capacity to endure complex loading
+              conditions is evaluated using the Tsai-Wu failure criterion. The
+              final phase combines both stiffness and strength criteria.
+            </p>
+
+            <h2>Stiffness Design</h2>
+            <p>
+              The stiffness design aims to find the lightest laminate that meets
+              the following requirements:
+            </p>
+            <ul>
+              <li>Axx ≥ 100,000 N/mm in the global x-y reference frame</li>
+              <li>Axx ≥ 30,000 N/mm for any rotated x-y frame</li>
+              <li>Dxx ≥ 25,000 N·mm</li>
+            </ul>
+            <p>
+              A MATLAB code was built using functions for calculating the
+              stiffness matrix Q and the ABD matrix, and then used to obtain the
+              lamina stacking sequence or layup which satisfied the stiffness
+              design constraint values.
+            </p>
+
+            <h2>Strength Design</h2>
+            <p>
+              In our pursuit to identify the lightest feasible laminate that can
+              endure all outlined load conditions, we utilized the Tsai-Wu
+              criterion, an interactive failure theory, for failure prediction.
+              The laminate is required to survive the following applied loads:
+            </p>
+            <ul>
+              <li>Nxx = 600 N/mm</li>
+              <li>Nθθ = 200 N/mm</li>
+              <li>Mxx = ±100 N</li>
+            </ul>
+
+            <!--
+          Replace with your image:
+          
+        -->
+            <img
+              src="assets/img/Composites_1.png"
+              class="proj-img"
+              alt="Tsai-Wu criteria plot"
+            />
+            <p class="proj-img-caption">
+              Tsai-Wu criteria for final lamina configuration
+            </p>
+
+            <h2>Results</h2>
+            <p>
+              Three distinct laminate configurations were investigated during
+              the design process, each tailored to a specific objective:
+              optimizing stiffness, optimizing strength, and creating a combined
+              stiffness-strength solution.
+            </p>
+            <p>
+              The final laminate [0 0 0 0 35 90 90 90 90]s achieved both
+              stiffness and strength objectives through a symmetric layup with a
+              fiber volume fraction of 40%. This configuration struck an
+              effective balance between mechanical performance and weight
+              efficiency. The values for the stiffness design parameters are:
+            </p>
+            <ul>
+              <li>Axx = 1.0207 × 10⁵ N/mm in the global x-y reference frame</li>
+              <li>min(Axx) = 8.2686 × 10⁴ N/mm for any rotated x-y frame</li>
+              <li>Dxx = 5.8612 × 10⁴ N·mm</li>
+              <li>Dyy = 1.5187 × 10⁴ N·mm</li>
+            </ul>
+
+            <!--
+          Replace with your image:
+          
+        -->
+            <img
+              src="assets/img/compisites_2.png"
+              class="proj-img"
+              alt="Final laminate Tsai-Wu"
+            />
+            <p class="proj-img-caption">
+              Tsai-Wu criteria for final combined design — [0 0 0 0 35 90 90 90
+              90]s
+            </p>
+
+            <h2>Conclusion</h2>
+            <p>
+              This study effectively presents an optimized approach to designing
+              composite laminates that successfully balance stiffness and
+              strength while minimizing weight. Through a systematic analysis of
+              the ABD matrix and application of the Tsai-Wu failure criterion,
+              three distinct laminate configurations were assessed. The final
+              design not only achieved structural integrity but also enhanced
+              weight efficiency at 27.8604 kg/m², demonstrating that strategic
+              layering and careful material selection are vital. This
+              methodology emphasizes the trade-offs inherent in composite design
+              and provides a solid framework for future advancements in
+              lightweight, high-performance materials.
+            </p>
+
+            <div class="divider"></div>
+
+            <h2>Project Report</h2>
+            <a href="assets/pdf/composites.pdf" class="pdf-ref" target="_blank">
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M14 2H6a2 2 0 00-2 2v16a2 2 0
+            002 2h12a2 2 0 002-2V8z"
+                />
+                <polyline points="14 2 14 8 20 8" />
+                <line x1="16" y1="13" x2="8" y2="13" />
+                <line x1="16" y1="17" x2="8" y2="17" />
+              </svg>
+              View Full Report
+            </a>
+
+            <div class="divider"></div>
+            <div class="tags">
+              <span class="tag-gold">ABD Matrix</span>
+              <span class="tag-gold">Tsai-Wu Criterion</span>
+              <span class="tag-gold">Carbon/Epoxy</span>
+              <span class="tag-gold">MATLAB</span>
+              <span class="tag-gold">Stiffness Design</span>
+              <span class="tag-gold">Strength Design</span>
+              <span class="tag-gold">Weight Optimization</span>
+            </div>
+          </div>
+
+          <div class="sidebar">
+            <div class="sidebar-card">
+              <h3>Study Details</h3>
+              <div class="meta-row">
+                <span>Type</span><span>FEA / Composites</span>
+              </div>
+              <div class="meta-row">
+                <span>Institution</span><span>CU Boulder</span>
+              </div>
+              <div class="meta-row">
+                <span>Course</span>
+                <span>Composite Structures</span>
+              </div>
+              <div class="meta-row">
+                <span>Final Weight</span><span>27.86 kg/m²</span>
+              </div>
+              <div class="meta-row">
+                <span>Final Layup</span>
+                <span>[0 0 0 0 35 90 90 90 90]s</span>
+              </div>
+            </div>
+            <div class="sidebar-card">
+              <h3>Tools Used</h3>
+              <div class="tags" style="gap: 6px">
+                <span class="tag">MATLAB</span>
+                <span class="tag">ABD Matrix</span>
+                <span class="tag">Tsai-Wu</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <p>© 2026 Eesha Tolety</p>
+      <p>Boulder, Colorado</p>
+    </footer>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>
